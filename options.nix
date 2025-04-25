@@ -6,6 +6,11 @@
 
 lib: with lib; {
 
+  githubId = mkOption {
+    description = "User's GitHub ID from https://api.github.com/users/{username}";
+    type = types.int;
+  };
+
   sshKeys = mkOption {
     description = "Set of user's SSH public keys";
     default = [ ];
