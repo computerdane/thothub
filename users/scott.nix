@@ -8,4 +8,5 @@
       uuid = "33879815-699c-4a15-b04c-2dce27a570be";
     }
   ];
+  hashedPassword = "$y$j9T$kD2zMuHsAqnYkdw8FyH.J0$tn6JMgL.ZddWH3qzmZwKfWOdu/RdONX6Miy82qwtYI7";
 }
