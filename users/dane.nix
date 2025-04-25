@@ -12,4 +12,5 @@
     }
   ];
   hashedPassword = "$y$j9T$t7GUtWKPLov7lY0diq72l/$EDxpyfw17AgVHNQytRqwjkVlfo4TyRlcGiMxocSBIG9";
+  shell = "fish";
 }
