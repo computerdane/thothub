@@ -36,4 +36,14 @@ lib: with lib; {
     description = "Specifies the hashed password for the user. See {option}`users.users.<name>.hashedPassword`";
   };
 
+  shell = mkOption {
+    description = "User's preferred shell";
+    default = "fish";
+    type = types.enum [
+      "bash"
+      "fish"
+      "zsh"
+    ];
+  };
+
 }
