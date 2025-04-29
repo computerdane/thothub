@@ -23,7 +23,7 @@ jobs:
         PREV_HASH=$(git rev-parse origin/main) ./can-auto-merge.sh
       env:
         CURR_HASH: ${{ github.sha }}
-        GITHUB_ID: ${{ github.actor }}
+        GITHUB_ID: ${{ github.actor_id }}
 
     - if: ${{ success() }}
       run: |
