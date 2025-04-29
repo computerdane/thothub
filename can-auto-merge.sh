@@ -1,5 +1,4 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash -p nix git jq
+#!/usr/bin/env bash
 #
 # can-auto-merge.sh
 #
