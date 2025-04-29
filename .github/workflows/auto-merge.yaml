@@ -5,6 +5,9 @@ on:
     branches-ignore:
       - 'main'
 
+permissions:
+  contents: write
+
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
