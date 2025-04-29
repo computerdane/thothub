@@ -1,0 +1,32 @@
+name: Auto-merge user-owned changes
+
+on:
+  push:
+    branches:
+      - stage
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - uses: cachix/install-nix-action@v31
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+
+    - run: |
+        git fetch origin main
+        PREV_HASH=$(git rev-parse origin/main) ./can-auto-merge.sh
+      env:
+        CURR_HASH: ${{ github.sha }}
+        GITHUB_ID: ${{ github.actor }}
+
+    - if: ${{ success() }}
+      run: |
+        git checkout main
+        git merge --no-ff ${{ github.ref }}
+        git push origin main
