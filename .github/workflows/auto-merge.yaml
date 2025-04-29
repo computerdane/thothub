@@ -2,11 +2,11 @@ name: Auto-merge user-owned changes
 
 on:
   push:
-    branches:
-      - stage
+    branches-ignore:
+      - 'main'
 
 jobs:
-  check:
+  auto-merge:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,5 +28,5 @@ jobs:
     - if: ${{ success() }}
       run: |
         git checkout main
-        git merge --no-ff ${{ github.ref }}
+        git merge ${{ github.ref }}
         git push origin main
