@@ -12,6 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.ref }}
+        ref: ${{ github.event.pull_request.head.sha }}
     - uses: cachix/install-nix-action@v31
     - run: ./check.sh
