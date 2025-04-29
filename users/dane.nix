@@ -6,7 +6,7 @@
     phone = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIeXM/afFCGyO69zC7+Dhw6jcY5y7vnaAIXkI5RTY/Pu";
     fatusb = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJLvONY5rvgbkp9ytyCuqFgU5u+h91Eol72URbGFhM0i";
   };
-  minecraftAccounts = [
+  minecraftAccount = [
     {
       name = "Dane47";
       uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2";
