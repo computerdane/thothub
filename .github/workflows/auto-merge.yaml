@@ -18,11 +18,7 @@ jobs:
         fetch-depth: 0
 
     - uses: cachix/install-nix-action@v31
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-
-    - run: |
-        nix-env -i jq -f '<nixpkgs>'
+    - run: nix profile install nixpkgs#jq
 
     - run: |
         git fetch origin main
