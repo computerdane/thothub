@@ -4,4 +4,4 @@
 
 set -eou pipefail
 
-nix eval .#evalModule "$@" >/dev/null
+nix eval .#evalModule.config.thots "$@" >/dev/null
