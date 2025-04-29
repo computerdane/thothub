@@ -18,9 +18,10 @@ jobs:
       with:
         nix_path: nixpkgs=channel:nixos-unstable
 
-    - run: ./can-auto-merge.sh
+    - run: |
+        git fetch origin main
+        PREV_HASH=$(git rev-parse origin/main) ./can-auto-merge.sh
       env:
-        PREV_HASH: ${{ github.event.before }}
         CURR_HASH: ${{ github.sha }}
         GITHUB_ID: ${{ github.actor }}
 
