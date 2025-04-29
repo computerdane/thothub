@@ -1,0 +1,14 @@
+name: Check for valid NixOS configuration
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: ./check.sh
