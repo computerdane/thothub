@@ -12,6 +12,7 @@
     { self, nixpkgs-lib }:
     let
       thotlib = import ./thotlib.nix;
+      lib = nixpkgs-lib.lib;
     in
     {
       nixosModules.thots =
@@ -33,9 +34,15 @@
           ) config._thots;
         };
 
-      lib = import ./lib.nix { lib = nixpkgs-lib.lib; };
+      lib = import ./lib.nix { inherit lib; };
 
-      # Used for testing if the modules evaluate
-      evalModule = nixpkgs-lib.lib.evalModules { modules = [ self.nixosModules.thots ]; };
+      # These can be evaluated with `nix eval` to run checks on the repo
+      eval = rec {
+        module = lib.evalModules { modules = [ self.nixosModules.thots ]; };
+        githubIds = map (thot: thot.githubId) (builtins.attrValues module.config.thots);
+        githubIdsAreUnique =
+          if githubIds == (lib.unique githubIds) then true else throw "Found duplicate GitHub IDs!";
+      };
+
     };
 }

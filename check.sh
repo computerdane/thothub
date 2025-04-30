@@ -8,5 +8,6 @@
 set -eou pipefail
 
 nix flake check
-nix eval .#evalModule.config.thots "$@" >/dev/null
+nix eval .#eval.module.config.thots "$@" >/dev/null
+nix eval .#eval.githubIdsAreUnique "$@" >/dev/null
 nix eval .#lib.testsPassed "$@" >/dev/null
