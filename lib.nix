@@ -11,6 +11,38 @@ let
 in
 rec {
   /**
+    Maps a user's Minecraft account to an entry in a server's ops.json file.
+
+    # Inputs
+
+    `acct`
+
+    : A minecraft account from {option}`config.thots.<name>.minecraftAccounts`
+
+    # Type
+
+    ```
+    AttrSet -> AttrSet
+    ```
+
+    # Example
+    :::{.example}
+    ## `thothub.lib.toMinecraftOp` usage example
+
+    ```
+    toMinecraftOp (builtins.elemAt config.thots.dane.minecraftAccounts 0)
+    => { bypassesPlayerLimit = true; level = 4; name = "Dane47"; uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2"; }
+    ```
+  */
+  toMinecraftOp =
+    acct:
+    acct
+    // {
+      level = 4;
+      bypassesPlayerLimit = true;
+    };
+
+  /**
     Maps a list of thots to a list that matches the schema of Minecraft's
     ops.json. Use builtins.toJSON to convert the result to actual JSON.
 
@@ -35,21 +67,7 @@ rec {
     => [ { bypassesPlayerLimit = true; level = 4; name = "Dane47"; uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2"; } { bypassesPlayerLimit = true; level = 4; name = "ipv6_dotsh"; uuid = "33879815-699c-4a15-b04c-2dce27a570be"; } ]
     ```
   */
-  toMinecraftOps =
-    thots:
-    flatten (
-      map (
-        thot:
-        map (
-          acct:
-          acct
-          // {
-            level = 4;
-            bypassesPlayerLimit = true;
-          }
-        ) thot.minecraftAccounts
-      ) thots
-    );
+  toMinecraftOps = thots: flatten (map (thot: map toMinecraftOp thot.minecraftAccounts) thots);
 
   # Unit tests for our lib functions
   runTests = lib.runTests {
