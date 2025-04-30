@@ -33,6 +33,8 @@
           ) config._thots;
         };
 
+      lib = import ./lib.nix { lib = nixpkgs-lib.lib; };
+
       # Used for testing if the modules evaluate
       evalModule = nixpkgs-lib.lib.evalModules { modules = [ self.nixosModules.thots ]; };
     };
