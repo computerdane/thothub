@@ -1,4 +1,4 @@
-name: Auto-merge user-owned changes
+name: Run check & attempt auto-merge
 
 on:
   push:
@@ -9,7 +9,16 @@ permissions:
   contents: write
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v31
+    - run: ./check.sh
+
   auto-merge:
+    needs: check
     runs-on: ubuntu-latest
 
     steps:
@@ -19,17 +28,17 @@ jobs:
         ssh-key: ${{ secrets.GHA_DEPLOY_KEY }}
 
     - uses: cachix/install-nix-action@v31
-    - run: nix profile install nixpkgs#jq
 
-    - run: |
+    - id: can-auto-merge
+      run: |
         git fetch origin main
-        export PREV_HASH=$(git rev-parse origin/main)
-        ./check.sh && ./can-auto-merge.sh
+        PREV_HASH=$(git rev-parse origin/main) ./can-auto-merge.sh
       env:
         CURR_HASH: ${{ github.sha }}
         GITHUB_ID: ${{ github.actor_id }}
+      continue-on-error: true
 
-    - if: ${{ success() }}
+    - if: steps.can-auto-merge.outcome == 'success'
       run: |
         git checkout main
         git merge ${{ github.ref }}
