@@ -4,4 +4,5 @@
 
 set -eou pipefail
 
+nix flake check
 nix eval .#evalModule.config.thots "$@" >/dev/null
