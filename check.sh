@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+#
 # check.sh
 #
 # Ensures that the "thots" NixOS module has a valid configuration and that all
