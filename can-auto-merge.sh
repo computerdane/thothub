@@ -19,8 +19,8 @@ if [ "$num_files_changed" -eq 1 ]; then
   file_changed="$status"
 
   if echo "Modified: $file_changed" | grep users; then
-    prev_github_id=$(nix eval --json --expr "$(git show "$PREV_HASH:$file_changed")" | jq .githubId)
-    curr_github_id=$(nix eval --json --expr "$(git show "$CURR_HASH:$file_changed")" | jq .githubId)
+    prev_github_id=$(nix eval --json --expr "$(git show "$PREV_HASH:$file_changed").githubId")
+    curr_github_id=$(nix eval --json --expr "$(git show "$CURR_HASH:$file_changed").githubId")
 
     echo "Previous GitHub ID: $prev_github_id"
     echo "Current GitHub ID: $curr_github_id"
