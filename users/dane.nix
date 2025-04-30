@@ -12,6 +12,6 @@
       uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2";
     }
   ];
-  hashedPassword = "$y$j9T$ANVbshInZAQVoCnGLiOGY.$ygMWCKB8OFBubz/MggOT9MTz1eACAbnI89hYrVIy3y/";
+  hashedPassword = "$y$j9T$duOHjV.NtZGClDklpYtZq0$/Ba3XQVvZrdZ6L7qAKxFO1Gks/ukzyvk6DygkEW5b/3";
   shell = "fish";
 }
