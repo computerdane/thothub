@@ -14,4 +14,14 @@
   ];
   hashedPassword = "$y$j9T$duOHjV.NtZGClDklpYtZq0$/Ba3XQVvZrdZ6L7qAKxFO1Gks/ukzyvk6DygkEW5b/3";
   shell = "fish";
+  wireguardPeers = [
+    {
+      Endpoint = "nf6.sh:51820";
+      PublicKey = "XPhFzmjrJQ4sR3ZHHTVslHIcagKn67jzuE1HkPbkgXk=";
+      AllowedIPs = [
+        "10.105.0.0/16"
+        "2600:1700:591:3b3e::/64"
+      ];
+    }
+  ];
 }
