@@ -9,7 +9,19 @@
       uuid = "33879815-699c-4a15-b04c-2dce27a570be";
     }
   ];
-  hashedPassword = "$y$j9T$NphGmt/JROju0maG5.asq/$Qab/jS7D9LbhAgrVDCGdtgBrYWnu0yE0n53Lgqwzw7B";
+  hashedPassword = "$y$j9T$oJqQwqnYd8ayfR23efUHe.$uPpIB0xVA3HsvUqe/u.J.sBaNjXQYJM.Lzng5925.hA";
   shell = "fish";
-  ## Hi
+  wireguardPeers = [
+    {
+      Endpoint = "zak9.thotlab.net:51820";
+      PublicKey = "7Rbjel+ivF1LD76TfcYgYLyxhe89b3r7vlF3iG6dYE4=";
+      AllowedIPs = [
+        "172.31.100.0/24"
+        "172.31.0.0/16"
+        "fd00:100::/64"
+        "fd00:100::/32"
+        "2001:470:be1c::/52"
+      ];
+    }
+  ];
 }
