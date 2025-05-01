@@ -13,3 +13,9 @@ branch with your changes and push it to the repo. It will be auto-merged and
 the branch will be deleted for you. The auto-merge will only fail if you made
 extra changes to other files, if you changed your GitHub ID, or if your changes
 fail to pass checks.
+
+---
+
+Commit messages: There aren't strict guidelines for commit messages (yet), but
+please ensure your commits have messages (talking about you, Scott), and keep
+your messages brief.
