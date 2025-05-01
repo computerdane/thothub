@@ -19,3 +19,14 @@ fail to pass checks.
 Commit messages: There aren't strict guidelines for commit messages (yet), but
 please ensure your commits have messages (talking about you, Scott), and keep
 your messages brief.
+
+---
+
+Usage: Import the Flake output .#nixosModules.thots into your NixOS config. Each
+user's info will be made available under config.thots.<name>.
+
+---
+
+Library: The Flake output .#lib contains some helper functions for mapping
+config.thots to other common configuration options. See ./lib.nix for
+documentation and examples.
