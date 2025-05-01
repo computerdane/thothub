@@ -50,6 +50,7 @@ lib: with lib; {
     type = types.enum [
       "bash"
       "fish"
+      "sh"
       "zsh"
     ];
   };
