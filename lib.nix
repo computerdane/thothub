@@ -7,7 +7,7 @@
 { lib }:
 let
   inherit (builtins) map;
-  inherit (lib) flatten mapAttrsToList;
+  inherit (lib) flatten;
 in
 rec {
   /**
@@ -21,16 +21,15 @@ rec {
 
     `thots`
 
-    : A list of thots from {options}`config.thots.<name>`
+    : A list of thots from {option}`config.thots.<name>`
 
     # Type
 
     ```
-    String -> [AttrSet] -> [a]
+    String -> [AttrSet] -> [Any]
     ```
 
     # Example
-    :::{.example}
     ## `thothub.lib.select` usage example
 
     ```
@@ -51,7 +50,7 @@ rec {
 
     `thots`
 
-    : A list of thots from {options}`config.thots.<name>`
+    : A list of thots from {option}`config.thots.<name>`
 
     # Type
 
@@ -60,7 +59,6 @@ rec {
     ```
 
     # Example
-    :::{.example}
     ## `thothub.lib.select` usage example
 
     ```
@@ -86,7 +84,6 @@ rec {
     ```
 
     # Example
-    :::{.example}
     ## `thothub.lib.toMinecraftOp` usage example
 
     ```
@@ -121,7 +118,6 @@ rec {
     ```
 
     # Example
-    :::{.example}
     ## `thothub.lib.toMinecraftOps` usage example
 
     ```
