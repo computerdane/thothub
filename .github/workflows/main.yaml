@@ -3,7 +3,10 @@ name: Run check & attempt auto-merge
 on:
   push:
     branches-ignore:
-      - 'main'
+      - main
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: write
