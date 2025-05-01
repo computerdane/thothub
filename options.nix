@@ -13,7 +13,7 @@ lib: with lib; {
 
   sshKeys = mkOption {
     description = "Set of user's SSH public keys";
-    default = [ ];
+    default = { };
     type = types.attrsOf types.singleLineStr;
   };
 
