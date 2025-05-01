@@ -7,34 +7,68 @@
 { lib }:
 let
   inherit (builtins) map;
-  inherit (lib) flatten;
+  inherit (lib) flatten mapAttrsToList;
 in
 rec {
   /**
-    Collects all of the Minecraft accounts for the given users into one list.
+    Selects a property for each thot and collects them in a list.
 
     # Inputs
 
+    `key`
+
+    : An attribute of {option}`config.thots.<name>`
+
     `thots`
 
-    : A user from {option}`config.thots.<name>`
+    : A list of thots from {options}`config.thots.<name>`
 
     # Type
 
     ```
-    [AttrSet] -> [AttrSet]
+    String -> [AttrSet] -> [a]
     ```
 
     # Example
     :::{.example}
-    ## `thothub.lib.flattenMinecraftAccounts` usage example
+    ## `thothub.lib.select` usage example
 
     ```
-    flattenMinecraftAccounts (with config.thots; [ dane scott ])
-    => [ { name = "Dane47"; uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2"; } { name = "ipv6_dotsh"; uuid = "33879815-699c-4a15-b04c-2dce27a570be"; } ]
+    select "shell" (builtins.attrValues config.thots)
+    => [ "fish" "fish" "zsh" "bash" ]
     ```
   */
-  flattenMinecraftAccounts = thots: flatten (map (thot: thot.minecraftAccounts) thots);
+  select = key: thots: map (thot: thot.${key}) thots;
+
+  /**
+    Selects a property for each thot and collects them in a flattened list.
+
+    # Inputs
+
+    `key`
+
+    : An attribute of {option}`config.thots.<name>`
+
+    `thots`
+
+    : A list of thots from {options}`config.thots.<name>`
+
+    # Type
+
+    ```
+    String -> [AttrSet] -> [a]
+    ```
+
+    # Example
+    :::{.example}
+    ## `thothub.lib.select` usage example
+
+    ```
+    select "sshKeysList" (builtins.attrValues config.thots)
+    => [ "ed25519 AAAA...." "ed25519 AAAA...." "ed25519 AAAA...." "ed25519 AAAA...." ]
+    ```
+  */
+  flatSelect = key: thots: flatten (map (thot: thot.${key}) thots);
 
   /**
     Maps a user's Minecraft account to an entry in a server's ops.json file.
@@ -100,25 +134,27 @@ rec {
   # Tests for our lib functions
   runTests = lib.runTests {
 
-    test_toMinecraftOps_with_flattenMinecraftAccounts = {
-      expr = toMinecraftOps (flattenMinecraftAccounts [
-        {
-          minecraftAccounts = [
-            {
-              name = "Dane47";
-              uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2";
-            }
-          ];
-        }
-        {
-          minecraftAccounts = [
-            {
-              name = "ipv6_dotsh";
-              uuid = "33879815-699c-4a15-b04c-2dce27a570be";
-            }
-          ];
-        }
-      ]);
+    test_toMinecraftOps_with_flatSelect = {
+      expr = toMinecraftOps (
+        flatSelect "minecraftAccounts" [
+          {
+            minecraftAccounts = [
+              {
+                name = "Dane47";
+                uuid = "6cfede5c-8117-4673-bd7d-0a17bbab69e2";
+              }
+            ];
+          }
+          {
+            minecraftAccounts = [
+              {
+                name = "ipv6_dotsh";
+                uuid = "33879815-699c-4a15-b04c-2dce27a570be";
+              }
+            ];
+          }
+        ]
+      );
       expected = [
         {
           bypassesPlayerLimit = true;
