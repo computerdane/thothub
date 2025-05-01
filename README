@@ -4,7 +4,8 @@ our configurations
 ---
 
 To join: Open a PR that adds your users/{name}.nix file. Once it is accepted,
-you will be added as a collaborator.
+you will be added as a collaborator. For help writing your users/{name}.nix,
+use existing configs as examples, and refer to the schema in ./options.nix.
 
 ---
 
