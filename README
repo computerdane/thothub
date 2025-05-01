@@ -1,2 +1,15 @@
 thothub exports useful information about our identities so we can all use it in
 our configurations
+
+---
+
+To join: Open a PR that adds your users/{name}.nix file. Once it is accepted,
+you will be added as a collaborator.
+
+---
+
+Collaborators: To make quick changes to your users/{name}.nix file, create a
+branch with your changes and push it to the repo. It will be auto-merged and
+the branch will be deleted for you. The auto-merge will only fail if you made
+extra changes to other files, if you changed your GitHub ID, or if your changes
+fail to pass checks.
