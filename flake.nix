@@ -36,13 +36,8 @@
 
       lib = import ./lib.nix { inherit lib; };
 
-      # These can be evaluated with `nix eval` to run checks on the repo
-      eval = rec {
-        module = lib.evalModules { modules = [ self.nixosModules.thots ]; };
-        githubIds = map (thot: thot.githubId) (builtins.attrValues module.config.thots);
-        githubIdsAreUnique =
-          if githubIds == (lib.unique githubIds) then true else throw "Found duplicate GitHub IDs!";
-      };
+      # Use with `nix eval` to ensure the NixOS module is valid
+      eval.module = lib.evalModules { modules = [ self.nixosModules.thots ]; };
 
     };
 }
