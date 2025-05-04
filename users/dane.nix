@@ -20,7 +20,7 @@
       PublicKey = "XPhFzmjrJQ4sR3ZHHTVslHIcagKn67jzuE1HkPbkgXk=";
       AllowedIPs = [
         "10.105.0.0/16"
-        "2600:1700:591:3b3e::/64"
+        "2600:1700:280:496f::/64"
       ];
     }
   ];
