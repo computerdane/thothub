@@ -55,14 +55,14 @@ rec {
     # Type
 
     ```
-    String -> [AttrSet] -> [a]
+    String -> [AttrSet] -> [Any]
     ```
 
     # Example
-    ## `thothub.lib.select` usage example
+    ## `thothub.lib.flatSelect` usage example
 
     ```
-    select "sshKeysList" (builtins.attrValues config.thots)
+    flatSelect "sshKeysList" (builtins.attrValues config.thots)
     => [ "ed25519 AAAA...." "ed25519 AAAA...." "ed25519 AAAA...." "ed25519 AAAA...." ]
     ```
   */
