@@ -9,6 +9,16 @@
 
 set -eou pipefail
 
+cannot_auto_merge() {
+  echo "❌ Cannot auto-merge"
+  exit 1
+}
+
+if grep -qxF "$GITHUB_ID" timeout-corner; then
+  echo "User is in timeout."
+  cannot_auto_merge
+fi
+
 status=$(git diff --name-only "$PREV_HASH" "$CURR_HASH")
 num_files_changed=$(echo "$status" | wc -l)
 
@@ -33,5 +43,4 @@ if [ "$num_files_changed" -eq 1 ]; then
   fi
 fi
 
-echo "❌ Cannot auto-merge"
-exit 1
+cannot_auto_merge
