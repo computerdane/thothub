@@ -13,7 +13,7 @@
   shell = "fish";
   wireguardPeers = [
     {
-      Endpoint = "zak9.thotlab.net:51820";
+      Endpoint = "four.zak9.s99.sh:51820";
       PublicKey = "7Rbjel+ivF1LD76TfcYgYLyxhe89b3r7vlF3iG6dYE4=";
       AllowedIPs = [
         "172.31.100.0/24"
