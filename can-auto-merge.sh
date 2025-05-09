@@ -2,7 +2,7 @@
 #
 # can-auto-merge.sh
 #
-# Checks if pushed changes only contains edits to the users/{name}.nix file
+# Checks if pushed changes only contain edits to the users/{name}.nix file
 # that is owned by the user who made the push. If the commit has any other
 # changed files, or if the `githubId` attribute has been modified, the changes
 # cannot be automatically merged and must be reviewed.
