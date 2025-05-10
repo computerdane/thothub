@@ -9,5 +9,5 @@
       uuid = "55f8bb1a-f316-4c7e-af74-f8a1366cd57b";
     }
   ];
-  shell = "sh";
+  shell = "zsh";
 }
