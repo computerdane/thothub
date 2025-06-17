@@ -1,7 +1,7 @@
 {
   githubId = 56358999;
   sshKeys = {
-    pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC68w7+JGFNPrrB25TiwXGl0bgYBqJJqiLMOqr/bsbp0";
+    pc = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID9lhJ7ywUYOCV2eJUd6zC99TdcKeVYvs1Sb3XX70056 john@korhel.net";
   };
   minecraftAccounts = [
     {
